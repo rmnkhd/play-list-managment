@@ -32,7 +32,7 @@ export default function RootLayout({
                 className={clsx(
                     inter.className,
                     yekanBakh.className,
-                    'bg-gradient-to-br from-gray-300 to-gray-600 min-h-screen'
+                    'bg-gray-50 min-h-screen'
                 )}
             >
                 <Providers>{children}</Providers>

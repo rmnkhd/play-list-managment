@@ -1,22 +1,32 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSongs, usePlaylists, useAddSongToPlaylist } from '@/hooks/useQueries';
 import { Music, Search, Download, Plus, Loader2 } from 'lucide-react';
 import { formatDuration } from "@/utils";
 
 const SongsPage: React.FC = () => {
     const [searchTerm, setSearchTerm] = React.useState('');
+    const [debouncedSearchTerm, setDebouncedSearchTerm] = React.useState('');
     const [currentPage, setCurrentPage] = React.useState(1);
     const [showAddToPlaylist, setShowAddToPlaylist] = React.useState<number | null>(null);
 
     const perPage = 20;
 
     const { data: songsData, isLoading: songsLoading } = useSongs({
-        ...(searchTerm && { title: searchTerm }),
+        ...(debouncedSearchTerm  && { title: debouncedSearchTerm  }),
         page: currentPage,
         'per-page': perPage,
     });
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedSearchTerm(searchTerm);
+            setCurrentPage(1);
+        }, 2000);
+
+        return () => clearTimeout(handler);
+    }, [searchTerm]);
 
     const { data: playlistsData, isLoading: playlistsLoading } = usePlaylists();
     const addToPlaylistMutation = useAddSongToPlaylist();
