@@ -37,11 +37,11 @@ export const useCreatePlaylist = () => {
         mutationFn: (data: CreatePlaylistRequest) => playlistsApi.createPlaylist(data),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['playlists'] });
-            toast.success('پلی‌لیست با موفقیت ایجاد شد');
+            toast.success('پلی‌ لیست با موفقیت ایجاد شد');
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onError: (error: any) => {
-            toast.error(error.response?.data?.message || 'خطا در ایجاد پلی‌لیست');
+            toast.error(error.response?.data?.message || 'خطا در ایجاد پلی‌ لیست');
         },
     });
 };
@@ -55,11 +55,11 @@ export const useUpdatePlaylist = () => {
         onSuccess: (_, variables) => {
             queryClient.invalidateQueries({ queryKey: ['playlists'] });
             queryClient.invalidateQueries({ queryKey: ['playlist', variables.id] });
-            toast.success('پلی‌لیست با موفقیت به‌روزرسانی شد');
+            toast.success('پلی‌ لیست با موفقیت به‌روزرسانی شد');
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onError: (error: any) => {
-            toast.error(error.response?.data?.message || 'خطا در به‌روزرسانی پلی‌لیست');
+            toast.error(error.response?.data?.message || 'خطا در به‌روزرسانی پلی‌ لیست');
         },
     });
 };
@@ -71,11 +71,11 @@ export const useDeletePlaylist = () => {
         mutationFn: (id: number) => playlistsApi.deletePlaylist(id),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['playlists'] });
-            toast.success('پلی‌لیست با موفقیت حذف شد');
+            toast.success('پلی‌ لیست با موفقیت حذف شد');
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onError: (error: any) => {
-            toast.error(error.response?.data?.message || 'خطا در حذف پلی‌لیست');
+            toast.error(error.response?.data?.message || 'خطا در حذف پلی‌ لیست');
         },
     });
 };
@@ -89,7 +89,7 @@ export const useAddSongToPlaylist = () => {
         onSuccess: (_, variables) => {
             queryClient.invalidateQueries({ queryKey: ['playlist', variables.playlistId] });
             queryClient.invalidateQueries({ queryKey: ['playlists'] });
-            toast.success('آهنگ به پلی‌لیست اضافه شد');
+            toast.success('آهنگ به پلی‌ لیست اضافه شد');
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onError: (error: any) => {
@@ -107,7 +107,7 @@ export const useRemoveSongFromPlaylist = () => {
         onSuccess: (_, variables) => {
             queryClient.invalidateQueries({ queryKey: ['playlist', variables.playlistId] });
             queryClient.invalidateQueries({ queryKey: ['playlists'] });
-            toast.success('آهنگ از پلی‌لیست حذف شد');
+            toast.success('آهنگ از پلی‌ لیست حذف شد');
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onError: (error: any) => {

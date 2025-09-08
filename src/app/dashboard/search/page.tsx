@@ -58,7 +58,7 @@ const SearchPage: React.FC = () => {
             {/* Header */}
             <div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-2">جستجو</h1>
-                <p className="text-gray-600">در میان آهنگ‌ها جستجو کنید</p>
+                <p className="text-gray-600">در میان آهنگ ‌ها جستجو کنید</p>
             </div>
 
             {/* Search Input */}
@@ -166,7 +166,7 @@ const SearchPage: React.FC = () => {
                                                     <button
                                                         onClick={() => setShowAddToPlaylist(showAddToPlaylist === song.id ? null : song.id)}
                                                         className="p-2 text-gray-400 hover:text-green-600 transition-colors"
-                                                        title="اضافه به پلی‌لیست"
+                                                        title="اضافه به پلی‌ لیست"
                                                     >
                                                         <Plus className="w-4 h-4" />
                                                     </button>
@@ -174,7 +174,7 @@ const SearchPage: React.FC = () => {
                                                     {showAddToPlaylist === song.id && (
                                                         <div className="absolute left-0 top-full mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
                                                             <div className="p-2">
-                                                                <p className="text-xs text-gray-500 mb-2">اضافه به پلی‌لیست:</p>
+                                                                <p className="text-xs text-gray-500 mb-2">اضافه به پلی‌ لیست:</p>
                                                                 {playlists.length === 0 ? (
                                                                     <p className="text-sm text-gray-500 py-2 text-center">پلی‌لیستی موجود نیست</p>
                                                                 ) : (

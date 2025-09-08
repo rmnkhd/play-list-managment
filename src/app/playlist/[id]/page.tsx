@@ -38,13 +38,12 @@ const PlaylistDetailPage: React.FC = () => {
     const playlist = playlistData?.result;
     const allSongs = songsData?.result?.items || [];
 
-    // Filter out songs that are already in the playlist
     const availableSongs = allSongs.filter(song =>
         !playlist?.songs.some(playlistSong => playlistSong.id === song.id)
     );
 
     const handleRemoveSong = async (songId: number) => {
-        if (window.confirm('آیا از حذف این آهنگ از پلی‌لیست اطمینان دارید؟')) {
+        if (window.confirm('آیا از حذف این آهنگ از پلی‌ لیست اطمینان دارید؟')) {
             try {
                 await removeSongMutation.mutateAsync({ playlistId, songId });
             } catch (error) {
@@ -85,12 +84,12 @@ const PlaylistDetailPage: React.FC = () => {
         return (
             <div className="text-center py-12">
                 <ListMusic className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-500">پلی‌لیست پیدا نشد</p>
+                <p className="text-gray-500">پلی‌ لیست پیدا نشد</p>
                 <Link
-                    href="/playlists"
+                    href="/playlist"
                     className="text-blue-600 hover:text-blue-700 font-medium mt-2 inline-block"
                 >
-                    بازگشت به پلی‌لیست‌ها
+                    بازگشت به پلی‌ لیست ها
                 </Link>
             </div>
         );
@@ -98,19 +97,16 @@ const PlaylistDetailPage: React.FC = () => {
 
     return (
         <div className="space-y-6">
-            {/* Breadcrumb */}
             <div className="flex items-center space-x-2 space-x-reverse text-sm text-gray-500">
-                <Link href="/playlists" className="hover:text-gray-700">
-                    پلی‌لیست‌ها
+                <Link href="/playlist" className="hover:text-gray-700">
+                    پلی‌ لیست ها
                 </Link>
                 <ArrowLeft className="w-4 h-4 rotate-180" />
                 <span className="text-gray-900">{playlist.title}</span>
             </div>
 
-            {/* Playlist Header */}
             <div className="bg-white rounded-lg shadow p-6">
                 <div className="flex items-start space-x-6 space-x-reverse">
-                    {/* Cover */}
                     <div className="flex-shrink-0">
                         {playlist.cover ? (
                             <img
@@ -125,15 +121,14 @@ const PlaylistDetailPage: React.FC = () => {
                         )}
                     </div>
 
-                    {/* Info */}
                     <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between mb-4">
                             <h1 className="text-3xl font-bold text-gray-900">{playlist.title}</h1>
                             <div className="flex items-center space-x-3 space-x-reverse">
                                 <Link
-                                    href={`/playlists/${playlist.id}/edit`}
+                                    href={`/playlist/${playlist.id}/edit`}
                                     className="p-2 text-gray-400 hover:text-blue-600 transition-colors"
-                                    title="ویرایش پلی‌لیست"
+                                    title="ویرایش پلی‌ لیست"
                                 >
                                     <Edit2 className="w-5 h-5" />
                                 </Link>
@@ -165,13 +160,12 @@ const PlaylistDetailPage: React.FC = () => {
                 </div>
             </div>
 
-            {/* Songs List */}
             <div className="bg-white rounded-lg shadow">
                 {playlist.songs.length === 0 ? (
                     <div className="text-center py-12">
                         <Music className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                        <h3 className="text-lg font-medium text-gray-900 mb-2">پلی‌لیست خالی است</h3>
-                        <p className="text-gray-500 mb-4">آهنگ‌هایی به این پلی‌لیست اضافه کنید</p>
+                        <h3 className="text-lg font-medium text-gray-900 mb-2">پلی‌ لیست خالی است</h3>
+                        <p className="text-gray-500 mb-4">آهنگ‌هایی به این پلی‌ لیست اضافه کنید</p>
                         <button
                             onClick={() => setShowAddSongs(true)}
                             className="flex items-center space-x-2 space-x-reverse px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors mx-auto"
@@ -182,7 +176,6 @@ const PlaylistDetailPage: React.FC = () => {
                     </div>
                 ) : (
                     <>
-                        {/* Table Header */}
                         <div className="px-6 py-4 border-b border-gray-200">
                             <div className="grid grid-cols-12 gap-4 text-sm font-medium text-gray-500">
                                 <div className="col-span-1">#</div>
@@ -194,7 +187,6 @@ const PlaylistDetailPage: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Songs */}
                         <div className="divide-y divide-gray-200">
                             {playlist.songs.map((song, index) => (
                                 <div key={song.id} className="px-6 py-4 hover:bg-gray-50 group">
@@ -233,7 +225,7 @@ const PlaylistDetailPage: React.FC = () => {
                                                     onClick={() => handleRemoveSong(song.id)}
                                                     disabled={removeSongMutation.isPending}
                                                     className="p-2 text-gray-400 hover:text-red-600 transition-colors disabled:opacity-50"
-                                                    title="حذف از پلی‌لیست"
+                                                    title="حذف از پلی‌ لیست"
                                                 >
                                                     <Trash2 className="w-4 h-4" />
                                                 </button>
@@ -247,12 +239,11 @@ const PlaylistDetailPage: React.FC = () => {
                 )}
             </div>
 
-            {/* Add Songs Modal */}
             {showAddSongs && (
                 <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
                     <div className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] flex flex-col">
                         <div className="flex items-center justify-between p-6 border-b">
-                            <h2 className="text-lg font-semibold">اضافه کردن آهنگ به پلی‌لیست</h2>
+                            <h2 className="text-lg font-semibold">اضافه کردن آهنگ به پلی‌ لیست</h2>
                             <button
                                 onClick={() => setShowAddSongs(false)}
                                 className="text-gray-400 hover:text-gray-600"
@@ -269,13 +260,12 @@ const PlaylistDetailPage: React.FC = () => {
                                     type="text"
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
-                                    placeholder="جستجو در آهنگ‌ها..."
+                                    placeholder="جستجو در آهنگ ‌ها..."
                                     className="w-full pr-10 pl-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                 />
                             </div>
                         </div>
 
-                        {/* Available Songs */}
                         <div className="flex-1 overflow-hidden">
                             {songsLoading ? (
                                 <div className="flex items-center justify-center h-32">
@@ -287,7 +277,7 @@ const PlaylistDetailPage: React.FC = () => {
                                     <p className="text-gray-500">
                                         {searchTerm
                                             ? 'آهنگی با این عنوان پیدا نشد'
-                                            : 'همه آهنگ‌ها در این پلی‌لیست موجود هستند'
+                                            : 'همه آهنگ ‌ها در این پلی‌ لیست موجود هستند'
                                         }
                                     </p>
                                 </div>

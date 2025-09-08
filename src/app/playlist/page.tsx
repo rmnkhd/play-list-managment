@@ -21,7 +21,7 @@ import {
 import { formatDate } from "@/utils";
 
 const createPlaylistSchema = z.object({
-    title: z.string().min(1, 'عنوان پلی‌لیست الزامی است'),
+    title: z.string().min(1, 'عنوان پلی‌ لیست الزامی است'),
     cover: z.string().optional(),
 });
 
@@ -94,7 +94,7 @@ const PlaylistsPage: React.FC = () => {
     };
 
     const handleDeletePlaylist = async (id: number) => {
-        if (window.confirm('آیا از حذف این پلی‌لیست اطمینان دارید؟')) {
+        if (window.confirm('آیا از حذف این پلی‌ لیست اطمینان دارید؟')) {
             try {
                 await deletePlaylistMutation.mutateAsync(id);
                 setShowDropdown(null);
@@ -105,23 +105,21 @@ const PlaylistsPage: React.FC = () => {
     };
 
     return (
-        <div className="space-y-6">
-            {/* Header */}
+        <div className="space-y-6 p-8">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold text-gray-900 mb-2">پلی‌لیست‌ها</h1>
-                    <p className="text-gray-600">مدیریت پلی‌لیست‌های خود</p>
+                    <h1 className="text-3xl font-bold text-gray-900 mb-2">پلی ‌لیست‌ها</h1>
+                    <p className="text-gray-600">مدیریت پلی ‌لیست‌ های خود</p>
                 </div>
                 <button
                     onClick={() => setShowCreateModal(true)}
                     className="flex items-center space-x-2 space-x-reverse px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
                     <Plus className="w-5 h-5" />
-                    <span>پلی‌لیست جدید</span>
+                    <span>پلی‌ لیست جدید</span>
                 </button>
             </div>
 
-            {/* Playlists Grid */}
             <div className="bg-white rounded-lg shadow">
                 {isLoading ? (
                     <div className="flex items-center justify-center h-64">
@@ -130,14 +128,14 @@ const PlaylistsPage: React.FC = () => {
                 ) : playlists.length === 0 ? (
                     <div className="text-center py-12">
                         <ListMusic className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                        <h3 className="text-lg font-medium text-gray-900 mb-2">هنوز پلی‌لیستی ندارید</h3>
-                        <p className="text-gray-500 mb-4">اولین پلی‌لیست خود را ایجاد کنید</p>
+                        <h3 className="text-lg font-medium text-gray-900 mb-2">هنوز پلی ‌لیستی ندارید</h3>
+                        <p className="text-gray-500 mb-4">اولین پلی ‌لیست خود را ایجاد کنید</p>
                         <button
                             onClick={() => setShowCreateModal(true)}
                             className="flex items-center space-x-2 space-x-reverse px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors mx-auto"
                         >
                             <Plus className="w-5 h-5" />
-                            <span>پلی‌لیست جدید</span>
+                            <span>پلی‌ لیست جدید</span>
                         </button>
                     </div>
                 ) : (
@@ -145,7 +143,6 @@ const PlaylistsPage: React.FC = () => {
                         {playlists.map((playlist) => (
                             <div key={playlist.id} className="group relative">
                                 <div className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                                    {/* Playlist Cover */}
                                     <div className="relative mb-4">
                                         {playlist.cover ? (
                                             <img
@@ -159,7 +156,6 @@ const PlaylistsPage: React.FC = () => {
                                             </div>
                                         )}
 
-                                        {/* Dropdown Menu */}
                                         <div className="absolute top-2 left-2">
                                             <button
                                                 onClick={() => setShowDropdown(showDropdown === playlist.id ? null : playlist.id)}
@@ -171,7 +167,7 @@ const PlaylistsPage: React.FC = () => {
                                             {showDropdown === playlist.id && (
                                                 <div className="absolute top-full left-0 mt-1 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
                                                     <Link
-                                                        href={`/playlists/${playlist.id}/edit`}
+                                                        href={`/playlist/${playlist.id}/edit`}
                                                         className="flex items-center space-x-2 space-x-reverse px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                                     >
                                                         <Edit2 className="w-4 h-4" />
@@ -190,8 +186,7 @@ const PlaylistsPage: React.FC = () => {
                                         </div>
                                     </div>
 
-                                    {/* Playlist Info */}
-                                    <Link href={`/playlists/${playlist.id}`}>
+                                    <Link href={`/playlist/${playlist.id}`}>
                                         <h3 className="font-medium text-gray-900 mb-2 truncate hover:text-blue-600 transition-colors">
                                             {playlist.title}
                                         </h3>
@@ -211,12 +206,11 @@ const PlaylistsPage: React.FC = () => {
                 )}
             </div>
 
-            {/* Create Playlist Modal */}
             {showCreateModal && (
                 <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
                     <div className="bg-white rounded-lg w-full max-w-md">
                         <div className="flex items-center justify-between p-6 border-b">
-                            <h2 className="text-lg font-semibold">پلی‌لیست جدید</h2>
+                            <h2 className="text-lg font-semibold">پلی‌ لیست جدید</h2>
                             <button
                                 onClick={() => {
                                     setShowCreateModal(false);
@@ -233,13 +227,13 @@ const PlaylistsPage: React.FC = () => {
                         <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    عنوان پلی‌لیست
+                                    عنوان پلی‌ لیست
                                 </label>
                                 <input
                                     {...register('title')}
                                     type="text"
                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                    placeholder="عنوان پلی‌لیست خود را وارد کنید"
+                                    placeholder="عنوان پلی‌ لیست خود را وارد کنید"
                                 />
                                 {errors.title && (
                                     <p className="mt-1 text-sm text-red-600">{errors.title.message}</p>
@@ -262,7 +256,7 @@ const PlaylistsPage: React.FC = () => {
                                             <ListMusic className="w-6 h-6 text-gray-400" />
                                         </div>
                                     )}
-                                    <label className="cursor-pointer flex items-center space-x-2 space-x-reverse px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+                                    <label className="cursor-pointer flex items-center space-x-2 ms-5 space-x-reverse px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
                                         <Upload className="w-4 h-4" />
                                         <span>انتخاب تصویر</span>
                                         <input
@@ -284,7 +278,7 @@ const PlaylistsPage: React.FC = () => {
                                         setCoverFile(null);
                                         setCoverPreview(null);
                                     }}
-                                    className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                                    className="px-4 py-2 me-3 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
                                 >
                                     انصراف
                                 </button>
@@ -301,7 +295,7 @@ const PlaylistsPage: React.FC = () => {
                                     ) : (
                                         <>
                                             <Plus className="w-4 h-4" />
-                                            <span>ایجاد پلی‌لیست</span>
+                                            <span>ایجاد پلی ‌لیست</span>
                                         </>
                                     )}
                                 </button>
@@ -311,7 +305,6 @@ const PlaylistsPage: React.FC = () => {
                 </div>
             )}
 
-            {/* Click outside to close dropdown */}
             {showDropdown && (
                 <div
                     className="fixed inset-0 z-0"

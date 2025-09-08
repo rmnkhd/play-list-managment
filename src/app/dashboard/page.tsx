@@ -14,13 +14,13 @@ const DashboardPage: React.FC = () => {
 
     const stats = [
         {
-            name: 'تعداد پلی‌لیست‌ها',
+            name: 'تعداد پلی‌ لیست ها',
             value: playlists.length,
             icon: ListMusic,
             color: 'bg-blue-500',
         },
         {
-            name: 'تعداد آهنگ‌ها',
+            name: 'تعداد آهنگ ‌ها',
             value: songs.length,
             icon: Music,
             color: 'bg-green-500',
@@ -44,14 +44,12 @@ const DashboardPage: React.FC = () => {
     ];
 
     return (
-        <div className="space-y-8 bg-red-700">
-            {/* Header */}
+        <div className="space-y-8 p-8">
             <div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-5">داشبورد</h1>
                 <p className="text-gray-600">نمای کلی از موزیک پلیر شما</p>
             </div>
 
-            {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {stats.map((stat, index) => (
                     <div key={index} className="bg-white rounded-lg shadow p-6">
@@ -68,18 +66,17 @@ const DashboardPage: React.FC = () => {
                 ))}
             </div>
 
-            {/* Quick Actions */}
             <div className="bg-white rounded-lg shadow p-6">
                 <h2 className="text-xl font-semibold text-gray-900 mb-4">عملیات سریع</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Link
-                        href="/playlists?action=create"
+                        href="/playlist"
                         className="flex items-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-colors"
                     >
                         <Plus className="w-6 h-6 text-gray-400 ml-3" />
                         <div>
-                            <h3 className="font-medium text-gray-900">پلی‌لیست جدید</h3>
-                            <p className="text-sm text-gray-500">ایجاد پلی‌لیست جدید</p>
+                            <h3 className="font-medium text-gray-900">پلی‌ لیست جدید</h3>
+                            <p className="text-sm text-gray-500">ایجاد پلی‌ لیست جدید</p>
                         </div>
                     </Link>
 
@@ -89,30 +86,18 @@ const DashboardPage: React.FC = () => {
                     >
                         <Music className="w-6 h-6 text-gray-400 ml-3" />
                         <div>
-                            <h3 className="font-medium text-gray-900">مرور آهنگ‌ها</h3>
-                            <p className="text-sm text-gray-500">مشاهده همه آهنگ‌ها</p>
-                        </div>
-                    </Link>
-
-                    <Link
-                        href="/search"
-                        className="flex items-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-colors"
-                    >
-                        <Music className="w-6 h-6 text-gray-400 ml-3" />
-                        <div>
-                            <h3 className="font-medium text-gray-900">جستجوی آهنگ</h3>
-                            <p className="text-sm text-gray-500">پیدا کردن آهنگ دلخواه</p>
+                            <h3 className="font-medium text-gray-900">مرور و جستجو آهنگ ‌ها</h3>
+                            <p className="text-sm text-gray-500">مشاهده همه آهنگ ‌ها</p>
                         </div>
                     </Link>
                 </div>
             </div>
 
-            {/* Recent Playlists */}
             <div className="bg-white rounded-lg shadow p-6">
                 <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-semibold text-gray-900">آخرین پلی‌لیست‌ها</h2>
+                    <h2 className="text-xl font-semibold text-gray-900">آخرین پلی‌ لیست ها</h2>
                     <Link
-                        href="/playlists"
+                        href="/playlist"
                         className="text-blue-600 hover:text-blue-700 font-medium text-sm"
                     >
                         مشاهده همه
@@ -128,10 +113,10 @@ const DashboardPage: React.FC = () => {
                         <ListMusic className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                         <p className="text-gray-500">هنوز پلی‌لیستی ایجاد نکرده‌اید</p>
                         <Link
-                            href="/playlists?action=create"
+                            href="/playlist"
                             className="text-blue-600 hover:text-blue-700 font-medium mt-2 inline-block"
                         >
-                            اولین پلی‌لیست خود را بسازید
+                            اولین پلی‌ لیست خود را بسازید
                         </Link>
                     </div>
                 ) : (
@@ -139,7 +124,7 @@ const DashboardPage: React.FC = () => {
                         {playlists.slice(0, 6).map((playlist) => (
                             <Link
                                 key={playlist.id}
-                                href={`/playlists/${playlist.id}`}
+                                href={`/playlist/${playlist.id}`}
                                 className="block p-4 border rounded-lg hover:shadow-md transition-shadow"
                             >
                                 <div className="flex items-center space-x-3 space-x-reverse">
@@ -157,10 +142,9 @@ const DashboardPage: React.FC = () => {
                 )}
             </div>
 
-            {/* Recent Songs Preview */}
             <div className="bg-white rounded-lg shadow p-6">
                 <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-semibold text-gray-900">آهنگ‌های اخیر</h2>
+                    <h2 className="text-xl font-semibold text-gray-900">آهنگ‌ های اخیر</h2>
                     <Link
                         href="/songs"
                         className="text-blue-600 hover:text-blue-700 font-medium text-sm"

@@ -49,7 +49,7 @@ const RegisterPage: React.FC = () => {
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4" dir="rtl">
             <div className="w-full max-w-md">
                 <div className="bg-white rounded-2xl shadow-xl p-8">
-                    {/* Header */}
+
                     <div className="text-center mb-8">
                         <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
                             <Music className="w-8 h-8 text-blue-600" />
@@ -58,7 +58,6 @@ const RegisterPage: React.FC = () => {
                         <p className="text-gray-600">در موزیک پلیر عضو شوید</p>
                     </div>
 
-                    {/* Form */}
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                         <div className="grid grid-cols-2 gap-4">
                             <div>
@@ -171,7 +170,6 @@ const RegisterPage: React.FC = () => {
                         </button>
                     </form>
 
-                    {/* Footer */}
                     <div className="mt-6 text-center">
                         <p className="text-gray-600">
                             قبلاً ثبت نام کرده‌اید؟{' '}

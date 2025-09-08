@@ -10,7 +10,6 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Music, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { LoginRequest } from '@/types';
 
-// ✅ اعتبارسنجی فرم
 const loginSchema = z.object({
     username: z.string().min(1, 'نام کاربری الزامی است'),
     password: z.string().min(6, 'رمز عبور باید حداقل ۶ کاراکتر باشد'),
@@ -33,7 +32,6 @@ const LoginPage: React.FC = () => {
         resolver: zodResolver(loginSchema),
     });
 
-    // ✅ ارسال فرم
     const onSubmit = async (data: LoginForm) => {
         const success = await login(data as LoginRequest);
         if (success) {
@@ -60,7 +58,6 @@ const LoginPage: React.FC = () => {
                         <p className="text-gray-600">به موزیک پلیر خوش آمدید</p>
                     </div>
 
-                    {/* Form */}
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -125,7 +122,6 @@ const LoginPage: React.FC = () => {
                         </button>
                     </form>
 
-                    {/* Footer */}
                     <div className="mt-6 text-center">
                         <p className="text-gray-600">
                             حساب کاربری ندارید؟{' '}

@@ -48,14 +48,12 @@ const SongsPage: React.FC = () => {
     };
 
     return (
-        <div className="space-y-6" dir="rtl">
-            {/* Header */}
+        <div className="space-y-6 p-8" dir="rtl">
             <div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">آهنگ‌ها</h1>
-                <p className="text-gray-600">مرور و جستجو در همه آهنگ‌ها</p>
+                <h1 className="text-3xl font-bold text-gray-900 mb-2">آهنگ ‌ها</h1>
+                <p className="text-gray-600">مرور و جستجو در همه آهنگ ‌ها</p>
             </div>
 
-            {/* Search */}
             <div className="bg-white rounded-lg shadow p-6">
                 <form onSubmit={handleSearch} className="flex gap-4">
                     <div className="flex-1 relative">
@@ -64,7 +62,7 @@ const SongsPage: React.FC = () => {
                             type="text"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            placeholder="جستجو در آهنگ‌ها..."
+                            placeholder="جستجو در آهنگ ‌ها..."
                             className="w-full pr-10 pl-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         />
                     </div>
@@ -89,7 +87,6 @@ const SongsPage: React.FC = () => {
                 </form>
             </div>
 
-            {/* Songs List */}
             <div className="bg-white rounded-lg shadow">
                 {songsLoading ? (
                     <div className="flex items-center justify-center h-64">
@@ -104,7 +101,6 @@ const SongsPage: React.FC = () => {
                     </div>
                 ) : (
                     <>
-                        {/* Table Header */}
                         <div className="px-6 py-4 border-b border-gray-200">
                             <div className="grid grid-cols-12 gap-4 text-sm font-medium text-gray-500">
                                 <div className="col-span-4">آهنگ</div>
@@ -116,7 +112,6 @@ const SongsPage: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Songs */}
                         <div className="divide-y divide-gray-200">
                             {songs.map((song) => (
                                 <div key={song.id} className="px-6 py-4 hover:bg-gray-50">
@@ -136,7 +131,6 @@ const SongsPage: React.FC = () => {
                                         <div className="col-span-1 text-gray-600">{formatDuration(song.duration)}</div>
                                         <div className="col-span-1">
                                             <div className="flex items-center space-x-2 space-x-reverse relative">
-                                                {/* Download */}
                                                 <button
                                                     onClick={() => handleDownload(song.file, song.title)}
                                                     className="p-2 text-gray-400 hover:text-blue-600 transition-colors"
@@ -145,14 +139,13 @@ const SongsPage: React.FC = () => {
                                                     <Download className="w-4 h-4" />
                                                 </button>
 
-                                                {/* Add to playlist */}
                                                 <div className="relative">
                                                     <button
                                                         onClick={() =>
                                                             setShowAddToPlaylist(showAddToPlaylist === song.id ? null : song.id)
                                                         }
                                                         className="p-2 text-gray-400 hover:text-green-600 transition-colors"
-                                                        title="اضافه به پلی‌لیست"
+                                                        title="اضافه به پلی‌ لیست"
                                                     >
                                                         <Plus className="w-4 h-4" />
                                                     </button>

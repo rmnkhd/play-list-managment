@@ -12,7 +12,7 @@ import {
     User,
     Search
 } from 'lucide-react';
-import { cn } from '@/utils/index';
+import { cn } from '@/utils';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -30,8 +30,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
     const navigation = [
         { name: 'داشبورد', href: '/dashboard', icon: Home },
-        { name: 'آهنگ‌ها', href: '/songs', icon: Music },
-        { name: 'پلی‌لیست‌ها', href: '/playlists', icon: ListMusic },
+        { name: 'آهنگ ‌ها', href: '/songs', icon: Music },
+        { name: 'پلی‌ لیست ها', href: '/playlist', icon: ListMusic },
         { name: 'جستجو', href: '/search', icon: Search },
     ];
 
@@ -41,7 +41,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
     return (
         <div className="min-h-screen bg-gray-50 flex" dir="rtl">
-            {/* Sidebar */}
             <div className="w-64 bg-white shadow-lg fixed h-full">
                 <div className="p-6">
                     <h1 className="text-2xl font-bold text-gray-800 mb-8">موزیک پلیر</h1>
@@ -68,7 +67,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     </nav>
                 </div>
 
-                {/* User section at bottom */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 border-t">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3 space-x-reverse">
@@ -90,7 +88,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </div>
             </div>
 
-            {/* Main content */}
             <div className="flex-1 mr-64">
                 <main className="p-6">
                     {children}
