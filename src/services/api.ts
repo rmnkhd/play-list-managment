@@ -13,7 +13,7 @@ import {
     UpdatePlaylistRequest
 } from '@/types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://example.com';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://188.121.116.185';
 
 const apiClient = axios.create({
     baseURL: API_BASE_URL,
